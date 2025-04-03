@@ -73,11 +73,9 @@ const Passenger = () => {
 
 const styles = StyleSheet.create({
   container: {
+  
     flex: 1,
     backgroundColor: '#fff',
-    padding: 10,
-    borderWidth: 1,
-    borderRadius: 20,
     width: '100%',
     alignItems: 'center',
     alignSelf: 'center',
@@ -89,7 +87,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
     height: 86,
     paddingHorizontal: 15,
-    borderRadius: 20,
+    borderRadius: 2,
     width: '100%',
   },
   headerText: {
@@ -115,6 +113,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#000',
+bottom: 0,
     padding: 15,
     borderRadius: 20,
     alignItems: 'center',

@@ -31,7 +31,7 @@ const Driver: React.FC = () => {
     };
 
     try {
-
+//banco de dados do api
       const response = await fetch('http://localhost:8000/api/register' ,{
         method: 'POST',
         headers: {
