@@ -1,5 +1,5 @@
 import { MaterialIcons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -25,9 +25,9 @@ const Passenger = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => router.back()}>
+        <Link href="/">
           <MaterialIcons name='arrow-back' color='#fff' size={32} />
-        </TouchableOpacity>
+        </Link>
         <Text style={styles.headerText}>Cadastro de Passageiro</Text>
       </View>
       <Text style={styles.subHeaderText}>Vamos Realizar Seu Cadastro</Text>

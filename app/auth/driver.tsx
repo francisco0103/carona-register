@@ -43,7 +43,7 @@ const Driver: React.FC = () => {
           password
         })
       });
-
+//Aqui é onde você vai fazer a requisição para o banco de dados
       if (!response.ok) {
         throw new Error('Erro ao cadastrar motorista');
         console.log("erro");
