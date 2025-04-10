@@ -51,7 +51,7 @@ const Driver: React.FC = () => {
       await saveDriverData(driverData); // Salva os dados usando a função importada
       console.log("Certo", response);
       Alert.alert('Cadastro realizado!', 'Os dados do motorista foram salvos com sucesso!');
-      // router.push("/auth/NextPage"); // Navega para a próxima página
+       router.push("layouts/footer"); // Navega para a próxima página
     } catch (error) {
       Alert.alert('Erro', 'Não foi possível salvar os dados.');
     }
