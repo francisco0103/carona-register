@@ -61,8 +61,14 @@ const MapScreen = () => {
           </View>
         )}
         keyExtractor={item => item.id}
+
+
+
+        
       />
     </View>
+
+    
   );
 };
 

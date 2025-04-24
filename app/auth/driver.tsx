@@ -144,6 +144,7 @@ const Driver: React.FC = () => {
           <Text style={styles.buttonText}>Cadastrar</Text>
           {/* </Link> */}
         </TouchableOpacity>
+
       </View>
     </>
   );

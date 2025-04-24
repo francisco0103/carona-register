@@ -1,8 +1,9 @@
 import { MaterialIcons } from '@expo/vector-icons';
 import { Link, useRouter } from 'expo-router';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { saveDriverData } from './driverData';
 
 const Passenger = () => {
   const [name, setName] = useState('');
@@ -10,17 +11,34 @@ const Passenger = () => {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
-
-  const handleRegister = async () => {
-    if (name && email && phone && password) {
-      const user = { name, email, phone, password };
-      await AsyncStorage.setItem('user', JSON.stringify(user));
-      Alert.alert('Cadastro realizado!', `Nome: ${name}\nE-mail: ${email}\nTelefone: ${phone}`);
-      router.push('/layouts/footter');
-    } else {
-      Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+const handleRegister = async () => {
+  try {
+    const response = await fetch('http://localhost:8000/api/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+      }),
+    });
+    // Aqui é onde você vai fazer a requisição para o banco de dados
+    if (!response.ok) {
+      throw new Error('Erro ao cadastrar motorista');
     }
-  };
+    const driverData = { name, email, phone, password }; // Define os dados do motorista
+    await saveDriverData(driverData); // Salva os dados usando a função importada
+    console.log('Certo', response);
+    Alert.alert('Cadastro realizado!', 'Os dados do motorista foram salvos com sucesso!');
+    router.push('layouts/footer'); // Navega para a próxima página
+  } catch (error) {
+    Alert.alert('Erro', 'Não foi possível salvar os dados.');
+  }
+};
+
+// Removed duplicate handleRegister function
 
   return (
     <View style={styles.container}>
@@ -128,4 +146,8 @@ bottom: 0,
 export default Passenger;
 
 
+
+function setUserData(data: any) {
+  throw new Error('Function not implemented.');
+}
 
