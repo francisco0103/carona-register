@@ -5,12 +5,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export interface DriverData {
   name: string;
   email: string;
-  phone: string;
+  telephone: string;
+  type: string;
   password: string;
-  // carBrand: string;
-  // carModel: string;
-  // carYear: string;
-  // carPlate: string;
+   carbrand: string;
+   carmodel: string;
+   caryear: string;
+   carplate: string;
 }
 
 // Função para salvar dados do motorista

@@ -41,7 +41,6 @@ const UserProfile = () => {
     <View style={styles.container}>
       <Text style={styles.name}>Nome: {userData.name}</Text>
       <Text style={styles.email}>E-mail: {userData.email}</Text>
-      <Text style={styles.phone}>Telefone: {userData.phone}</Text>
     </View>
   );
 };
@@ -60,9 +59,6 @@ const styles = StyleSheet.create({
   email: {
     fontSize: 18,
     marginVertical: 10,
-  },
-  phone: {
-    fontSize: 18,
   },
   errorText: {
     fontSize: 18,

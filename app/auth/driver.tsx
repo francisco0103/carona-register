@@ -9,12 +9,12 @@ const Driver: React.FC = () => {
   const navigation = useNavigation();
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
-  const [phone, setPhone] = useState<string>('');
+  const [telephone, setTelephone] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  // const [carBrand, setCarBrand] = useState<string>('');
-  // const [carModel, setCarModel] = useState<string>('');
-  // const [carYear, setCarYear] = useState<string>('');
-  // const [carPlate, setCarPlate] = useState<string>('');
+  const [carbrand, setCarBrand] = useState<string>('');
+  const [carmodel, setCarModel] = useState<string>('');
+   const [caryear, setCarYear] = useState<string>('');
+   const [carplate, setCarPlate] = useState<string>('');
 
   const router = useRouter();
 
@@ -22,12 +22,13 @@ const Driver: React.FC = () => {
     const driverData: DriverData = {
       name,
       email,
-      phone,
-      password
-      // carBrand,
-      // carModel,
-      // carYear,
-      // carPlate,
+      telephone,
+      type: 'driver',
+      password,
+      carbrand,
+      carmodel,
+      caryear,
+      carplate,
     };
 
     try {
@@ -37,11 +38,7 @@ const Driver: React.FC = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          name,
-          email,
-          password
-        })
+        body: JSON.stringify(driverData)
       });
 //Aqui é onde você vai fazer a requisição para o banco de dados
       if (!response.ok) {
@@ -88,8 +85,8 @@ const Driver: React.FC = () => {
             style={styles.input}
             placeholder="Telefone"
             placeholderTextColor="#000000"
-            value={phone}
-            onChangeText={setPhone}
+            value={telephone}
+            onChangeText={setTelephone}
             keyboardType="phone-pad"
           />
           <TextInput
@@ -102,7 +99,7 @@ const Driver: React.FC = () => {
           />
         </View>
 
-        {/* <View style={styles.userInfo}>
+        { <View style={styles.userInfo}>
           <Text style={{ fontSize: 18, paddingVertical: 8, fontWeight: '700' }}>
             Dados do Veículo
           </Text>
@@ -111,14 +108,14 @@ const Driver: React.FC = () => {
               style={styles.carInput}
               placeholder="Marca do Carro"
               placeholderTextColor="#000000"
-              value={carBrand}
+              value={carbrand}
               onChangeText={setCarBrand}
             />
             <TextInput
               style={styles.carInput}
               placeholder="Modelo do Carro"
               placeholderTextColor="#000000"
-              value ={carModel}
+              value ={carmodel}
               onChangeText={setCarModel}
             />
           </View>
@@ -127,18 +124,18 @@ const Driver: React.FC = () => {
               style={styles.carInput}
               placeholder="Ano do Carro"
               placeholderTextColor="#000000"
-              value={carYear}
+              value={caryear}
               onChangeText={setCarYear}
             />
             <TextInput
               style={styles.carInput}
               placeholder="Placa do Carro"
               placeholderTextColor="#000000"
-              value={carPlate}
+              value={carplate}
               onChangeText={setCarPlate}
             />
           </View>
-        </View> */}
+        </View> }
         <TouchableOpacity style={styles.button} onPress={handleRegister}>
           {/* <Link href={"./NextPage"}> */}
           <Text style={styles.buttonText}>Cadastrar</Text>

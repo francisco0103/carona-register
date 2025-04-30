@@ -21,6 +21,8 @@ const handleRegister = async () => {
       body: JSON.stringify({
         name,
         email,
+        phone,
+        type: 'driver',
         password,
       }),
     });
@@ -28,8 +30,7 @@ const handleRegister = async () => {
     if (!response.ok) {
       throw new Error('Erro ao cadastrar motorista');
     }
-    const driverData = { name, email, phone, password }; // Define os dados do motorista
-    await saveDriverData(driverData); // Salva os dados usando a função importada
+
     console.log('Certo', response);
     Alert.alert('Cadastro realizado!', 'Os dados do motorista foram salvos com sucesso!');
     router.push('layouts/footer'); // Navega para a próxima página
